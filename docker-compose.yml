@@ -1,0 +1,67 @@
+# version: '3.8'
+# services:
+#   service1:
+#     build: .
+#     volumes:
+#       - ./logs/service1:/usr/src/app/logs
+#     ports:
+#       - "7001:7001"
+#     command: npm start
+
+#   service2:
+#     build: .
+#     volumes:
+#       - ./logs/service2:/usr/src/app/logs
+#     ports:
+#       - "7002:7001"
+#     command: npm start
+
+#   service3:
+#     build: .
+#     volumes:
+#       - ./logs/service3:/usr/src/app/logs
+#     ports:
+#       - "7003:7001"
+#     command: npm start
+version: '3.8'
+
+services:
+  service1:
+    container_name: AlertLog
+    build:
+      context: .
+      dockerfile: DockerfileAlert
+    ports:
+      - "7001:7001"
+
+  service2:
+    container_name: ErrorLog
+    build:
+      context: .
+      dockerfile: DockerfileError
+    ports:
+      - "7002:7002"
+
+  service3:
+    container_name: InfoLog
+    build:
+      context: .
+      dockerfile: DockerfileInfo
+    ports:
+      - "7003:7003"
+
+  service4:
+    container_name: UnknownLog
+    build:
+      context: .
+      dockerfile: DockerfileUnknown
+    ports:
+      - "7004:7004"
+
+  service5:
+    container_name: WarnLog
+    build:
+      context: .
+      dockerfile: DockerfileWarn
+    ports:
+      - "7005:7005"
